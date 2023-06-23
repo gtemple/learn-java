@@ -10,6 +10,5 @@ public class ListDemo {
 
     String[] x = new String[3];
     x[0] = "gio";
-
   }
 }

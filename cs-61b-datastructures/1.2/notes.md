@@ -12,3 +12,8 @@
 Arrays:
 - Size must be declared when created
 - Size cannot change
+- More performant than lists
+
+Maps:
+- Collection of key-value pairs
+- 
