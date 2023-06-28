@@ -1,4 +1,4 @@
-public class SList {
+public class SLList {
 
   private static class IntNode {
     public int item;
@@ -14,12 +14,12 @@ public class SList {
   public IntNode sentinel;
   private int size;
 
-  public SList() {
+  public SLList() {
     sentinel = new IntNode(1, null);
     size = 0;
   }
 
-  public SList(int x) {
+  public SLList(int x) {
     sentinel = new IntNode(63, null);
     sentinel.next = new IntNode(x, null);
     size = 1;
@@ -58,7 +58,7 @@ public class SList {
   }
 
   public static void main(String[] args) {
-    SList L = new SList();
+    SLList L = new SLList();
     L.addFirst(2);
     L.addFirst(4);
     L.addLast(9);
