@@ -1,4 +1,4 @@
-public class AList<Item> {
+public class AList<Item> implements List61B<Item> {
   private Item[] items;
   int size;
 
