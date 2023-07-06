@@ -9,4 +9,4 @@
 
 - Every variable has:
   1. A compile-time type (static type): Type specified at declaration and never changes.
-  2. A run-time type (dynamic type): specified aat instantion (when using new)
+  2. A run-time type (dynamic type): specified aat instantion (when using new). equal to the type of object
