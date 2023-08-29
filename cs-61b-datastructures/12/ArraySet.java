@@ -1,9 +1,8 @@
-// package 12;
-
 public class ArraySet<T> {
   private T[] items;
   private int size;
 
+  @SuppressWarnings("unchecked")
   public ArraySet() {
     items = (T[]) new Object[100];
     size = 0;
@@ -14,8 +13,8 @@ public class ArraySet<T> {
       if (items[i].equals(x)) {
         return true;
       }
-      return false;
     }
+    return false; // Moved outside of the loop
   }
 
   public void add(T x) {
