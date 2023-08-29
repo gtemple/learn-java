@@ -1,30 +1,79 @@
-public class ArraySet<T> {
-  private T[] items;
-  private int size;
+import java.util.Iterator;
 
-  @SuppressWarnings("unchecked")
-  public ArraySet() {
-    items = (T[]) new Object[100];
-    size = 0;
-  }
+public class ArraySet<T> implements Iterable<T> {
+    private T[] items;
+    private int size;
 
-  public boolean contains(T x) {
-    for (int i = 0; i < size; i += 1) {
-      if (items[i].equals(x)) {
-        return true;
-      }
+    @SuppressWarnings("unchecked")
+    public ArraySet() {
+        items = (T[]) new Object[100];
+        size = 0;
     }
-    return false; // Moved outside of the loop
-  }
 
-  public void add(T x) {
-    if (x == null) {
-      throw new IllegalArgumentException("can't add null");
+    public boolean contains(T x) {
+        for (int i = 0; i < size; i++) {
+            if (items[i] == null) {
+                if (x == null) {
+                    return true;
+                }
+            } else if (items[i].equals(x)) {
+                return true;
+            }
+        }
+        return false;
     }
-    if (contains(x)) {
-      return;
+
+    public void add(T x) {
+        if (x == null) {
+            throw new IllegalArgumentException("can't add null");
+        }
+        if (contains(x)) {
+            return;
+        }
+        items[size] = x;
+        size++;
     }
-    items[size] = x;
-    size += 1;
-  }
+
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new ArraySetIterator();
+    }
+
+    private class ArraySetIterator implements Iterator<T> {
+        private int wizPos;
+
+        public ArraySetIterator() {
+            wizPos = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return wizPos < size;
+        }
+
+        @Override
+        public T next() {
+            T returnItem = items[wizPos];
+            wizPos++;
+            return returnItem;
+        }
+    }
+
+    public static void main(String[] args) {
+        ArraySet<Integer> s = new ArraySet<>();
+        s.add(3);
+        s.add(44);
+        s.add(55);
+
+        Iterator<Integer> aseer = s.iterator();
+
+        while (aseer.hasNext()) {
+            int i = aseer.next();
+            System.out.println(i);
+        }
+    }
 }
