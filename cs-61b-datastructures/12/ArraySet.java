@@ -23,6 +23,24 @@ public class ArraySet<T> implements Iterable<T> {
         return false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) { return true; }
+      if (o instanceof ArraySet oas) {
+        if (oas.size != this.size) {
+          return false;
+        }
+
+        for (T x : this) {
+          if (!oas.contains(x)) {
+            return false;
+          }
+          return true;
+        }
+      }
+      return false;
+    }
+
     public void add(T x) {
         if (x == null) {
             throw new IllegalArgumentException("can't add null");
